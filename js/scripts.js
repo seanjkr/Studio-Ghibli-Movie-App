@@ -11,8 +11,14 @@ var repository= (function() {
   function loadList() {
     return $.ajax('https://ghibliapi.herokuapp.com/films', { dataType: 'json'}).then(function (responseJSON) {
       $.each(responseJSON, function(i, item) {
-        add(item);
-      })
+        var movies = {
+          title: item.title,
+          director: item.director,
+          release_date: item.release_date,
+          description: item.description
+        };
+        add(movies);
+      });
     }).catch(function (e) {
       console.error(e);
     })
@@ -37,7 +43,9 @@ var repository= (function() {
   });
 
   function showDetails(item) {
+    $('.modal').html('');
     $('#modal-container').addClass('is-visible');
+    $('.modal').append('<button class="modal-close"> Close </button>');
     $('.modal-close').on('click', function (event) {
       closeModal();
     });
@@ -45,10 +53,14 @@ var repository= (function() {
   }
 
   function addListItem(movies) {
-    $('.movie-list').append('<li> <button class="movie-button">' + movies.title +'</button> </li>');
-    $('.movie-button').on('click', function (event) {
+    var movieList = $('.movie-list');
+    var listItem = $('<li> </li>');
+    var button = $('<button class="movie-button">' + movies.title + '</button>');
+    listItem.append(button);
+    movieList.append(listItem);
+    button.on('click', function(event) {
       showDetails(movies);
-    })
+    });
   }
 
   return {
