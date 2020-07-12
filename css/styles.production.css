@@ -3,48 +3,147 @@
 }
 
 body {
+  position: relative;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.6;
   text-align: center;
   height: 100vh;
   margin-top: 135px;
-  background-color: #FFFAF0;
+}
+
+.background1,
+.background2,
+.background3 {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  z-index: 0;
+  min-height: 100%;
+  min-width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.background1 {
+  animation: backgroundFade 40s linear infinite;
+}
+
+.background2 {
+  animation: backgroundFade2 40s linear infinite;
+}
+
+.background3 {
+  animation: backgroundFade3 40s linear infinite;
+}
+
+@keyframes backgroundFade {
+  0% {
+    opacity: 1;
+  }
+  23% {
+    opacity: 1;
+  }
+  33% {
+    opacity: 0;
+  }
+  95% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes backgroundFade2 {
+  0% {
+    opacity: 0;
+  }
+  23% {
+    opacity: 0;
+  }
+  33% {
+    opacity: 1;
+  }
+  56% {
+    opacity: 1;
+  }
+  66% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes backgroundFade3 {
+  0% {
+    opacity: 0;
+  }
+  56% {
+    opacity: 0;
+  }
+  66% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 h1 {
   font-family: 'Anton', sans-serif;
   font-weight: 700;
-  font-size: 140px;
+  font-size: 70px;
+  padding: 0px;
 }
 
 .page-header {
   position: fixed;
+  display: flex;
   top: 0;
   left: 0;
   right: 0;
   z-index: 12;
   width: 100%;
-  background-color: #00FF7F;
+  background-color: rgba(0, 0, 0, 0.4);
   height: 121px;
   line-height: 0.92;
-  letter-spacing: 25px;
+  letter-spacing: 15px;
   color: white;
+  animation: fadeIn 3s linear;
 }
 
-.page-header__item {
-  position: relative;
-  top: -95px;
+.logo {
+  height: 121px;
+  padding-right: 40px;
 }
 
-.pokemon-button {
-  margin-bottom: 15px;
-  width: 95%;
+.movie-button {
+  margin-bottom: 25px;
+  width: 85%;
   text-transform: uppercase;
   font-family: 'Anton', sans-serif;
   font-size: 45px;
   color: white;
-  background-color: #98FB98;
+  background-color: black;
   border: none;
   padding-top: 0.5px;
   padding-bottom: 0.5px;
@@ -52,15 +151,16 @@ h1 {
   cursor: pointer;
 }
 
-.pokemon-button:hover {
-  filter: brightness(130%);
-  color: black;
+.movie-button:hover {
+  background-color: #A9A9A9;
   border: 2px solid black;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 ul {
   list-style-type: none;
+  position: relative;
+  animation: fadeIn 5s linear;
 }
 
 #modal-container {
@@ -83,8 +183,7 @@ ul {
 }
 
 #modal-container.is-visible h2 {
-  text-transform: uppercase;
-  font-size: 60px;
+  font-size: 50px;
   text-align: center;
 }
 
@@ -137,6 +236,5 @@ ul {
 }
 
 .top-link:hover {
-    background-color: #E8E8E8;
-  }
+  background-color: #E8E8E8;
 }
